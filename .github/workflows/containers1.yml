@@ -15,7 +15,7 @@ jobs:
       image: quay.io/techupskills/roardebug:1.0.2 
       credentials:
         username: ${{ secrets.QUAYIO_USERNAME }}
-        password: ${{ secrets.QUAYIO_PASSWORD }
+        password: ${{ secrets.QUAYIO_PASSWORD }}
    
     steps:
       - name: run xmllint
