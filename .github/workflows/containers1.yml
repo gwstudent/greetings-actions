@@ -23,7 +23,7 @@ jobs:
           - 3306:3306
     steps:
       - name: get info
-        run: ./entrypoint.sh mysqld
+        run: ls -la
       - name: get data
         run: mysql -uadmin -padmin -e 'select * from registry.agents'
 
