@@ -11,22 +11,14 @@ jobs:
   lint-tool:
 
     runs-on: ubuntu-latest
+    container: 
+      image: quay.io/techupskills/roardebug:1.0.2 
+      credentials:
+        username: ${{ secrets.QUAYIO_USERNAME }}
+        password: ${{ secrets.QUAYIO_PASSWORD }
    
     steps:
-    # - name: Login to quay.io Registry
-    #   run: echo ${{ secrets.QUAYIO_PASSWORD }} | docker login quay.io -u ${{ secrets.QUAYIO_USERNAME }} --password-stdin
-      - name: Login to Quay.io
-        uses: docker/login-action@v2
-        with:
-          registry: quay.io
-          username: ${{ secrets.QUAYIO_USERNAME }}
-          password: ${{ secrets.QUAYIO_PASSWORD }}
       - name: run xmllint
-        uses: docker://quay.io/techupskills/roardebug:1.0.2 
-        with:
-          entrypoint: xmllint
-          registry: quay.io
-          username: ${{ secrets.QUAYIO_USERNAME }}
-          password: ${{ secrets.QUAYIO_PASSWORD }}
+        run: xmllint
              
 
