@@ -6,5 +6,8 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Check for dockerenv file
-        run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
+     - name: Log the step container node version
+       uses: docker://node:12.14.1-alpine3.1
+       with:
+         entrypoint: usr/local/bin/echo
+         args: -v
