@@ -15,6 +15,7 @@ jobs:
         env:
           MYSQL_USER: admin
           MYSQL_PASSWORD: admin
+          MYSQL_ROOT_PASSWORD: root+1
           # MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: unittest
         ports:
