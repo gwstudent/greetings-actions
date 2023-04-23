@@ -25,5 +25,5 @@ jobs:
       - name: get info
         run: "mysql --version"
       - name: get data
-        run: "mysql -u admin -p admin -e 'select * from registry'"
+        run: "mysql -uadmin -padmin"
 
