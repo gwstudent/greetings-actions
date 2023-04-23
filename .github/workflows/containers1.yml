@@ -11,7 +11,7 @@ jobs:
   info:
 
     runs-on: ubuntu-latest
-    container: alpine:3.7.3
+    container: centos:latest
     steps:
     - uses: actions/checkout@v3
     - name: Build with Gradle
