@@ -2,9 +2,9 @@ name: Unit Test
 
 on:
   push:
-    branches: [service2, dev]
+    branches: [dev]
   pull_request:
-    branches: [master, develop]
+    branches: [main, dev]
 
 jobs:
   integration-tests:
@@ -13,7 +13,6 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-        #  MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ADMIN_PASS }}
           MYSQL_DATABASE: inttests
         ports:
