@@ -1,4 +1,4 @@
-name: Unit Test
+name: Integration tests using mysql db
 
 on:
   push:
