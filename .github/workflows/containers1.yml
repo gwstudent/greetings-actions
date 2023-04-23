@@ -3,17 +3,19 @@ name: containers-demo
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "xmllint" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "xmllint" ]
 
 jobs:
-  info:
+  lint-tool:
 
     runs-on: ubuntu-latest
-    container: golang:1.17.0-alpine
+   
     steps:
-    - uses: actions/checkout@v3
-    - name: get info
-      run: "go version"
+     - name: run xmllint
+       uses: docker://quay.io/techupskills/roardebug:1.0.2 
+       with:
+         entrypoint: xmllint
+             
 
