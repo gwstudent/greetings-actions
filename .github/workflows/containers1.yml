@@ -1,26 +1,29 @@
-
-name: containers-demo
+name: Unit Test
 
 on:
   push:
-    branches: [ "service2" ]
+    branches: [develop]
   pull_request:
-    branches: [ "main" ]
+    branches: [master, develop]
 
 jobs:
-  local-mysql:
+  PHPUnit:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0.21
         env:
-          MYSQL_DATABASE: test_db
-          MYSQL_USER: user
-          MYSQL_PASSWORD: password
-          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: unittest
         ports:
-          - 33306:3306
+          - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
-      - name: get info
-        run: mysql -uuser -ppassword -P33306 -e 'create database test'
+      - uses: actions/checkout@v2
+      - name: Verify unittest DB exists
+        run: mysql --host 127.0.0.1 --port 3306 -uroot -e "SHOW DATABASES LIKE 'unittest'"
+      - name: Create 2nd Database
+        run: mysql --host 127.0.0.1 --port 3306 -uroot -e "CREATE DATABASE IF NOT EXISTS unittest_second;"
+      - name: Verify unittest_second DB exists
+        run: mysql --host 127.0.0.1 --port 3306 -uroot -e "SHOW DATABASES LIKE 'unittest_second'"
