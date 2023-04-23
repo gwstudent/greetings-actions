@@ -23,7 +23,7 @@ jobs:
           - 3306:3306
     steps:
       - name: get info
-        run: "mysql --version"
+        run: mysql --version
       - name: get data
-        run: "mysql -uadmin -padmin"
+        run: mysql -uadmin -padmin -e 'select * from registry.agents'
 
