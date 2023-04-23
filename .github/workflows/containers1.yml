@@ -25,5 +25,8 @@ jobs:
         uses: docker://quay.io/techupskills/roardebug:1.0.2 
         with:
           entrypoint: xmllint
+          registry: quay.io
+          username: ${{ secrets.QUAYIO_USERNAME }}
+          password: ${{ secrets.QUAYIO_PASSWORD }}
              
 
