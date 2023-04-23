@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
    
     steps:
-     - name: login
-       run: docker login -u techupskills2 -p 
      - name: Login to quay.io Registry
        run: echo ${{ secrets.QUAYIO_PASSWORD }} | docker login quay.io -u ${{ secrets.QUAYIO_USERNAME }} --password-stdin
      - name: run xmllint
