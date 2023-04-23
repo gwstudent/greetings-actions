@@ -18,7 +18,8 @@ jobs:
         password: ${{ secrets.QUAYIO_ROBOT_TOKEN }}
    
     steps:
+      - uses: actions/checkout@v3
       - name: run xmllint
-        run: xmllint
+        run: xmllint web.xml
              
 
