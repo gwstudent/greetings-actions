@@ -9,5 +9,5 @@ jobs:
      - name: Log the step container node version
        uses: docker://rockylinux:9.1
        with:
-         entrypoint: usr/bin/uname
+         entrypoint: /usr/bin/uname
          args: -a
