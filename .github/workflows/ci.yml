@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: Log the step container node version
-       uses: docker://node:20-alpine3.16
+       uses: docker://rockylinux:9.1
        with:
          entrypoint: usr/bin/uname
          args: -a
