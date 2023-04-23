@@ -23,7 +23,9 @@ jobs:
                  --health-retries=3
 
     steps:
-      - uses: actions/checkout@v2   
+      - uses: actions/checkout@v2  
+      - name: change authentication method
+        run: mysql --host 127.0.0.1 --port 3306 -uroot -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'";
       - name: Verify integration tests db exists
         run: mysql --host 127.0.0.1 --port 3306 
          -u${{ secrets.MYSQL_ADMIN_USER }} 
