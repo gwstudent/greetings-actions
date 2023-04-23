@@ -12,10 +12,10 @@ jobs:
 
     runs-on: ubuntu-latest
     container: 
-      image: quay.io/techupskills2/roar-db:v3
-     # credentials:
-     #   username: ${{ secrets.QUAYIO_ROBOT_USER }}
-     #   password: ${{ secrets.QUAYIO_ROBOT_TOKEN }}
+      image: quay.io/techupskills2/xmltools:1.0.0
+      credentials:
+        username: ${{ secrets.QUAYIO_ROBOT_USER }}
+        password: ${{ secrets.QUAYIO_ROBOT_TOKEN }}
    
     steps:
       - name: run xmllint
