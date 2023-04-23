@@ -14,6 +14,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ADMIN_PASS }}
           MYSQL_DATABASE: inttests
         ports:
           - 3306:3306
@@ -27,5 +28,6 @@ jobs:
       - name: Verify integration tests db exists
         run: mysql --host 127.0.0.1 --port 3306 
          -u${{ secrets.MYSQL_USER }} 
+         -p${{ secrets.MYSQL_ADMIN_PASS }}
          -e "SHOW DATABASES LIKE 'inttests'"
       
