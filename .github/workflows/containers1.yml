@@ -7,26 +7,26 @@ on:
     branches: [master, develop]
 
 jobs:
-  PHPUnit:
+  integration-tests:
     runs-on: ubuntu-latest
     services:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_USER: admin
-          MYSQL_PASSWORD: admin
-          MYSQL_ROOT_PASSWORD: root+1
-          # MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: unittest
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: inttests
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping" \
+                 --health-interval=10s \
+                 --health-timeout=5s \
+                 --health-retries=3
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Verify unittest DB exists
-        run: mysql --host 127.0.0.1 --port 3306 -uadmin -padmin -e "SHOW DATABASES LIKE 'unittest'"
-      - name: Create 2nd Database
-        run: mysql --host 127.0.0.1 --port 3306 -uadmin -padmin -e "CREATE DATABASE IF NOT EXISTS unittest_second;"
-      - name: Verify unittest_second DB exists
-        run: mysql --host 127.0.0.1 --port 3306 -uadmin -padmin -e "SHOW DATABASES LIKE 'unittest_second'"
+      - uses: actions/checkout@v2   
+      - name: Verify integration tests db exists
+        run: mysql --host 127.0.0.1 --port 3306 \
+         -u${{ secrets.MYSQL_ADMIN_USER }} \
+         -p${{ secrets.MYSQL_ADMIN_PASS }} \
+         admin -e "SHOW DATABASES LIKE 'inttests'"
+      
