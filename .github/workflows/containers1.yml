@@ -11,7 +11,7 @@ jobs:
   info:
 
     runs-on: ubuntu-latest
-    container: rockylinux:9.1
+   # container: rockylinux:9.1
     steps:
     - uses: actions/checkout@v3
     - name: get info
