@@ -15,5 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build with gradle
-      run: docker run gradle:latest build
+      run: docker run gradle:latest gradle build
 
