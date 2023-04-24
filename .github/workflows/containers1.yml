@@ -15,5 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build with gradle
-      run: sudo docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle gradle build
+      run: sudo docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle clean build
 
