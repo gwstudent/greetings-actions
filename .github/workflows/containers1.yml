@@ -3,7 +3,7 @@ name: containers-demo
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "docker-run" ]
   pull_request:
     branches: [ "main" ]
 
@@ -11,9 +11,9 @@ jobs:
   info:
 
     runs-on: ubuntu-latest
-    container: golang:1.17.0-alpine
+
     steps:
     - uses: actions/checkout@v3
-    - name: get info
-      run: "go version"
+    - name: build with gradle
+      run: docker run gradle:latest build
 
